@@ -1,27 +1,27 @@
 package main
 
-import "fmt"
-
-func checkfreq(list []int) map[int]int {
-
-	freq := make(map[int]int)
-
-	for _, value := range list {
-
-		freq[value]++
-
-	}
-
-	return freq
-}
+import (
+	"fmt"
+)
 
 func main() {
 
-	list := []int{1, 1, 1, 2, 2, 3, 1, 4, 2, 5, 6, 7, 5, 3, 4, 6, 6}
+	var word string
+	fmt.Print("Enter Text: ")
+	fmt.Scanln(&word)
 
-	res := checkfreq(list)
+	listOfWord := []rune(word)
 
-	for num, count := range res {
-		fmt.Printf("\n%d : %d bar\n", num, count)
+	low := 0
+	high := len(listOfWord) - 1
+
+	for i := 0; low < high; i++ {
+
+		listOfWord[low], listOfWord[high] = listOfWord[high], listOfWord[low]
+		low++
+		high--
+
 	}
+
+	fmt.Println("\n", string(listOfWord))
 }
