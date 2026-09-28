@@ -15,7 +15,7 @@ func main() {
 	low := 0
 	high := len(listOfWord) - 1
 
-	for i := 0; low < high; i++ {
+	for low < high {
 
 		listOfWord[low], listOfWord[high] = listOfWord[high], listOfWord[low]
 		low++
