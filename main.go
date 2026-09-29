@@ -2,25 +2,30 @@ package main
 
 import "fmt"
 
-func filter(list []string, target int) []string {
+func removeDuplicate(list []int) []int {
 
-	var new []string
+	var newlist []int
 
 	for _, value := range list {
+		seen := false
+		for _, val := range newlist {
 
-		letter := []byte(value)
-		if len(letter) > target {
-
-			new = append(new, string(letter))
+			if value == val {
+				seen = true
+				break
+			}
+		}
+		if seen != true {
+			newlist = append(newlist, value)
 		}
 	}
-	return new
+	return newlist
 }
 
 func main() {
 
-	list := []string{"apple", "banana", "watermelon", "mango", "pineapple"}
-	target := 5
-	list = filter(list, target)
-	fmt.Println(list)
+	numbers := []int{1, 2, 2, 3, 4, 4, 5}
+
+	fmt.Println(removeDuplicate(numbers))
+
 }
