@@ -2,30 +2,22 @@ package main
 
 import "fmt"
 
-func removeDuplicate(list []int) []int {
+func freqChecker(list []int) map[int]int {
 
-	var newlist []int
+	newlist := make(map[int]int)
 
 	for _, value := range list {
-		seen := false
-		for _, val := range newlist {
-
-			if value == val {
-				seen = true
-				break
-			}
-		}
-		if seen != true {
-			newlist = append(newlist, value)
-		}
+		newlist[value]++
 	}
 	return newlist
 }
 
 func main() {
 
-	numbers := []int{1, 2, 2, 3, 4, 4, 5}
+	list := []int{1, 1, 1, 2, 2, 3, 4, 4, 4, 4, 1, 2, 3, 6, 8, 8, 9, 9}
 
-	fmt.Println(removeDuplicate(numbers))
-
+	newlist := freqChecker(list)
+	for key, value := range newlist {
+		fmt.Printf("\n%d : %d", key, value)
+	}
 }
