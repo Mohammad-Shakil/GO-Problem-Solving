@@ -2,22 +2,32 @@ package main
 
 import "fmt"
 
-func freqChecker(list []int) map[int]int {
+func stringReversal(p []string) []string {
+	var newlist []string
+	for _, element := range p {
+		letters := []rune(element)
 
-	newlist := make(map[int]int)
-
-	for _, value := range list {
-		newlist[value]++
+		low := 0
+		high := len(letters) - 1
+		for low < high {
+			letters[low], letters[high] = letters[high], letters[low]
+			low++
+			high--
+		}
+		bToS := string(letters)
+		newlist = append(newlist, bToS)
 	}
 	return newlist
 }
 
 func main() {
 
-	list := []int{1, 1, 1, 2, 2, 3, 4, 4, 4, 4, 1, 2, 3, 6, 8, 8, 9, 9}
+	list := []string{"shakil", "kamal", "Parul", "Fahad", "uzzal", "sumaiya", "prantu", "pudding", "chiku"}
 
-	newlist := freqChecker(list)
-	for key, value := range newlist {
-		fmt.Printf("\n%d : %d", key, value)
+	revList := stringReversal(list)
+
+	for _, element := range revList {
+		fmt.Printf("\n Name: %s", element)
 	}
+
 }
