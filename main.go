@@ -2,35 +2,25 @@ package main
 
 import "fmt"
 
-func revers(word string) bool {
+func filter(list []string, target int) []string {
 
-	list := []rune(word)
+	var new []string
 
-	low := 0
-	high := len(list) - 1
+	for _, value := range list {
 
-	for low < high {
-		list[low], list[high] = list[high], list[low]
-		low++
-		high--
+		letter := []byte(value)
+		if len(letter) > target {
+
+			new = append(new, string(letter))
+		}
 	}
-
-	final := string(list)
-	return final == word
+	return new
 }
 
 func main() {
 
-	list := []string{"shakil", "uzzal", "lil", "pop"}
-
-	for _, value := range list {
-
-		truee := revers(value)
-
-		if truee {
-			fmt.Println("\n", value, "is a palindrome")
-		} else {
-			fmt.Println("\n", value, "is not a palindrome")
-		}
-	}
+	list := []string{"apple", "banana", "watermelon", "mango", "pineapple"}
+	target := 5
+	list = filter(list, target)
+	fmt.Println(list)
 }
