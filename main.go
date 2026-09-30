@@ -2,23 +2,25 @@ package main
 
 import "fmt"
 
+func countVowels(word string) int {
+
+	count := 0
+
+	for _, runes := range word {
+		value := string(runes)
+
+		switch value {
+		case "a", "e", "i", "o", "u", "A", "E", "I", "O", "U":
+			count++
+		}
+	}
+	return count
+}
+
 func main() {
 
-	list := []int{10, 5, 20, 8, 20, 15}
+	word := "Hello World"
 
-	max := list[0]
-	var second int
-	for i := 1; i < len(list); i++ {
+	fmt.Println(countVowels(word))
 
-		if list[i] > max {
-			second = max
-			max = list[i]
-		}
-		if list[i] > second && list[i] < max {
-			second = list[i]
-		}
-
-	}
-
-	fmt.Println("Max:", max, "Second max", second)
 }
