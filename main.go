@@ -20,5 +20,5 @@ func main() {
 
 	}
 
-	fmt.Println(max, second)
+	fmt.Println("Max:", max, "Second max", second)
 }
