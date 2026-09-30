@@ -1,20 +1,20 @@
 package main
 
-import (
-	"fmt"
-	"strings"
-)
-
-func countWords(list string) int {
-
-	slice := strings.Fields(list)
-
-	return len(slice)
-}
+import "fmt"
 
 func main() {
 
-	list := "I love Go programming"
+	list := []int{1, 2, 4, 5, 6}
 
-	fmt.Println(countWords(list))
+	p1 := 6
+	p2 := 6 + 1
+	p3 := p1 * p2
+	value := p3 / 2
+
+	var sum int
+	for _, val := range list {
+		sum = sum + val
+	}
+
+	fmt.Println(value - sum)
 }
