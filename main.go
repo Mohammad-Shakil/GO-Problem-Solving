@@ -1,26 +1,20 @@
 package main
 
-import "fmt"
+import (
+	"fmt"
+	"strings"
+)
 
-func countVowels(word string) int {
+func countWords(list string) int {
 
-	count := 0
+	slice := strings.Fields(list)
 
-	for _, runes := range word {
-		value := string(runes)
-
-		switch value {
-		case "a", "e", "i", "o", "u", "A", "E", "I", "O", "U":
-			count++
-		}
-	}
-	return count
+	return len(slice)
 }
 
 func main() {
 
-	word := "Hello Worldee"
+	list := "I love Go programming"
 
-	fmt.Println("Total Vowel count:", countVowels(word))
-
+	fmt.Println(countWords(list))
 }
