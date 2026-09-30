@@ -19,8 +19,8 @@ func countVowels(word string) int {
 
 func main() {
 
-	word := "Hello World"
+	word := "Hello Worldee"
 
-	fmt.Println(countVowels(word))
+	fmt.Println("Total Vowel count:", countVowels(word))
 
 }
