@@ -4,15 +4,21 @@ import "fmt"
 
 func main() {
 
-	makeSlice := make([]int, 0, 10)
+	list := []int{10, 5, 20, 8, 20, 15}
 
-	fmt.Println("Length:", len(makeSlice))
-	fmt.Println("Capacity:", cap(makeSlice))
+	max := list[0]
+	var second int
+	for i := 1; i < len(list); i++ {
 
-	fmt.Println("----------")
-	makeSlice = append(makeSlice, 3)
-	fmt.Println(makeSlice)
+		if list[i] > max {
+			second = max
+			max = list[i]
+		}
+		if list[i] > second && list[i] < max {
+			second = list[i]
+		}
 
-	fmt.Println("Length:", len(makeSlice))
-	fmt.Println("Capacity:", cap(makeSlice))
+	}
+
+	fmt.Println(max, second)
 }
