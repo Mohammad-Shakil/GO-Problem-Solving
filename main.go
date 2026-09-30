@@ -1,33 +1,28 @@
 package main
 
-import "fmt"
+import (
+	"bufio"
+	"fmt"
+	"os"
+	"strings"
+)
 
-func stringReversal(p []string) []string {
-	var newlist []string
-	for _, element := range p {
-		letters := []rune(element)
+func name(p string) {
 
-		low := 0
-		high := len(letters) - 1
-		for low < high {
-			letters[low], letters[high] = letters[high], letters[low]
-			low++
-			high--
-		}
-		bToS := string(letters)
-		newlist = append(newlist, bToS)
-	}
-	return newlist
+	reader := bufio.NewReader(os.Stdin)
+
+	fmt.Print("Enter your full name:")
+	name, _ := reader.ReadString('\n')
+
+	name = strings.TrimSpace(name)
+
+	fmt.Println("Hello", name)
 }
-
 func main() {
 
-	list := []string{"shakil", "kamal", "Parul", "Fahad", "uzzal", "sumaiya", "prantu", "pudding", "chiku"}
+	var name string
 
-	revList := stringReversal(list)
-
-	for _, element := range revList {
-		fmt.Printf("\n Name: %s", element)
-	}
-
+	fmt.Print("Enter name:")
+	fmt.Scanln(&name)
+	fmt.Println(name)
 }
