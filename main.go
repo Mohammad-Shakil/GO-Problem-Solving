@@ -2,27 +2,29 @@ package main
 
 import "fmt"
 
-func moveZero(list []int) []int {
+func chekDuplicate(list []int) []int {
+	var newlist []int
+	for i := 0; i < len(list); i++ {
+		seen := false
 
-	var nlist []int
-	var zeros int
-	for _, value := range list {
-
-		if value != 0 {
-			nlist = append(nlist, value)
-		} else {
-			zeros++
+		for j := 0; j < len(newlist); j++ {
+			if list[i] == newlist[j] {
+				seen = true
+				break
+			}
+		}
+		if seen == false {
+			newlist = append(newlist, list[i])
 		}
 	}
-	for i := 1; i <= zeros; i++ {
-		nlist = append(nlist, 0)
-	}
-	return nlist
+	return newlist
 }
 
 func main() {
 
-	list := []int{0, 1, 0, 3, 12}
+	list := []int{1, 2, 3, 2, 5}
+	numbers := []int{1, 2, 3, 4, 5}
 
-	fmt.Println(moveZero(list))
+	fmt.Println("Problem", chekDuplicate(list))
+	fmt.Println("Correct", chekDuplicate(numbers))
 }
