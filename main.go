@@ -2,31 +2,27 @@ package main
 
 import "fmt"
 
-func findSum(list []int, target int) (int, int) {
+func moveZero(list []int) []int {
 
-	var num1 int
-	var num2 int
+	var nlist []int
+	var zeros int
+	for _, value := range list {
 
-	for i := 0; i < len(list); i++ {
-
-		for j := 1; j < len(list); j++ {
-
-			if list[i]+list[j] == target {
-				num1 = i
-				num2 = j
-			}
+		if value != 0 {
+			nlist = append(nlist, value)
+		} else {
+			zeros++
 		}
 	}
-	return num1, num2
+	for i := 1; i <= zeros; i++ {
+		nlist = append(nlist, 0)
+	}
+	return nlist
 }
 
 func main() {
 
-	list := []int{2, 7, 11, 15}
+	list := []int{0, 1, 0, 3, 12}
 
-	target := 9
-
-	val1, val2 := findSum(list, target)
-
-	fmt.Println(list[val1], list[val2])
+	fmt.Println(moveZero(list))
 }
