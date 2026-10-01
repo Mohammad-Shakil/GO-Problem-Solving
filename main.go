@@ -2,19 +2,31 @@ package main
 
 import "fmt"
 
+func findSum(list []int, target int) (int, int) {
+
+	var num1 int
+	var num2 int
+
+	for i := 0; i < len(list); i++ {
+
+		for j := 1; j < len(list); j++ {
+
+			if list[i]+list[j] == target {
+				num1 = i
+				num2 = j
+			}
+		}
+	}
+	return num1, num2
+}
+
 func main() {
 
-	list := []int{1, 2, 4, 5, 6}
+	list := []int{2, 7, 11, 15}
 
-	p1 := 6
-	p2 := 6 + 1
-	p3 := p1 * p2
-	value := p3 / 2
+	target := 9
 
-	var sum int
-	for _, val := range list {
-		sum = sum + val
-	}
+	val1, val2 := findSum(list, target)
 
-	fmt.Println(value - sum)
+	fmt.Println(list[val1], list[val2])
 }
