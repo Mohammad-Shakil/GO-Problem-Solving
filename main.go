@@ -2,22 +2,20 @@ package main
 
 import "fmt"
 
-func chekDuplicate(list []int) []int {
-	var newlist []int
+func chekDuplicate(list []int) bool {
+	seen := false
 	for i := 0; i < len(list); i++ {
-		seen := false
 
-		for j := 0; j < len(newlist); j++ {
-			if list[i] == newlist[j] {
+		for j := i + 1; j < len(list); j++ {
+			if list[i] == list[j] {
 				seen = true
-				break
+				return seen
 			}
-		}
-		if seen == false {
-			newlist = append(newlist, list[i])
+
 		}
 	}
-	return newlist
+
+	return seen
 }
 
 func main() {
@@ -25,6 +23,6 @@ func main() {
 	list := []int{1, 2, 3, 2, 5}
 	numbers := []int{1, 2, 3, 4, 5}
 
-	fmt.Println("Problem", chekDuplicate(list))
-	fmt.Println("Correct", chekDuplicate(numbers))
+	fmt.Println(list, "Duplicate result:", chekDuplicate(list))
+	fmt.Println(numbers, "Duplicate result:", chekDuplicate(numbers))
 }
