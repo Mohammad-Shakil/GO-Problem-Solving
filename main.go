@@ -1,36 +1,23 @@
 package main
 
-import (
-	"fmt"
-	"strings"
-)
+import "fmt"
 
-func reversSentece(line string) string {
-
-	lientowords := strings.Fields(line)
-	var finallist []string
-	for _, word := range lientowords {
-		sliceWord := []rune(word)
-
-		low := 0
-		high := len(sliceWord) - 1
-		for low < high {
-
-			sliceWord[low], sliceWord[high] = sliceWord[high], sliceWord[low]
-			low++
-			high--
+func findSame(a, b []int) []int {
+	var result []int
+	for _, val1 := range a {
+		for _, val2 := range b {
+			if val1 == val2 {
+				result = append(result, val1)
+			}
 		}
-		wordback := string(sliceWord)
-		finallist = append(finallist, wordback)
 	}
-	final := strings.Join(finallist, " ")
-	return final
-
+	return result
 }
 
 func main() {
 
-	line := "Hello how are you"
+	a := []int{1, 2, 3, 4, 5}
+	b := []int{4, 5, 6, 7, 8}
 
-	fmt.Println(reversSentece(line))
+	fmt.Println(findSame(a, b))
 }
