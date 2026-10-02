@@ -1,25 +1,36 @@
 package main
 
-import "fmt"
+import (
+	"fmt"
+	"strings"
+)
 
-func checkDuplicate(list []int) bool {
+func reversSentece(line string) string {
 
-	seen := make(map[int]bool)
+	lientowords := strings.Fields(line)
+	var finallist []string
+	for _, word := range lientowords {
+		sliceWord := []rune(word)
 
-	for i := 0; i < len(list); i++ {
-		if seen[list[i]] {
-			return true
-		} else {
-			seen[list[i]] = true
+		low := 0
+		high := len(sliceWord) - 1
+		for low < high {
+
+			sliceWord[low], sliceWord[high] = sliceWord[high], sliceWord[low]
+			low++
+			high--
 		}
+		wordback := string(sliceWord)
+		finallist = append(finallist, wordback)
 	}
-	return false
+	final := strings.Join(finallist, " ")
+	return final
+
 }
 
 func main() {
 
-	list := []int{1, 2, 1, 3, 4, 5}
+	line := "Hello how are you"
 
-	fmt.Println(checkDuplicate(list))
-
+	fmt.Println(reversSentece(line))
 }
