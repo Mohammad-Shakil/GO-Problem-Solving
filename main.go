@@ -1,31 +1,28 @@
 package main
 
-import "fmt"
+import (
+	"fmt"
+	"strings"
+)
 
-func findSecondSmallest(list []int) (int, int) {
+func findlargest(line string) string {
 
-	smallest := list[0]
-	sesmallest := list[len(list)-1]
-	for i := 0; i < len(list); i++ {
+	wordsofLine := strings.Fields(line)
+	lar := 0
+	var largest string
+	for _, word := range wordsofLine {
 
-		if list[i] < smallest {
-			sesmallest = smallest
-			smallest = list[i]
-		}
-		if list[i] > smallest && list[i] < sesmallest {
-			sesmallest = list[i]
+		if len(word) > lar {
+			lar = len(word)
+			largest = word
 		}
 
 	}
-
-	return smallest, sesmallest
+	return largest
 }
-
 func main() {
 
-	list := []int{5, 10, 20}
+	line := "I love programming in Go"
 
-	smallest, secsmallest := findSecondSmallest(list)
-
-	fmt.Printf("smallest number is: %d \nSecond smallest number is: %d", smallest, secsmallest)
+	fmt.Println("Largest:", findlargest(line))
 }
