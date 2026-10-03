@@ -5,7 +5,7 @@ import "fmt"
 func findSecondSmallest(list []int) (int, int) {
 
 	smallest := list[0]
-	sesmallest := list[0]
+	sesmallest := list[len(list)-1]
 	for i := 0; i < len(list); i++ {
 
 		if list[i] < smallest {
@@ -23,7 +23,7 @@ func findSecondSmallest(list []int) (int, int) {
 
 func main() {
 
-	list := []int{10, 5, 20, 8, 15}
+	list := []int{5, 10, 20}
 
 	smallest, secsmallest := findSecondSmallest(list)
 
