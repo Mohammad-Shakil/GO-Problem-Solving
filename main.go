@@ -2,26 +2,30 @@ package main
 
 import "fmt"
 
-func findSame(a, b []int) ([]int, map[int]bool) {
+func findSecondSmallest(list []int) (int, int) {
 
-	register := make(map[int]bool)
-	var res []int
-	for _, val := range a {
-		register[val] = true
-	}
+	smallest := list[0]
+	sesmallest := list[0]
+	for i := 0; i < len(list); i++ {
 
-	for _, value := range b {
-		if register[value] {
-			res = append(res, value)
+		if list[i] < smallest {
+			sesmallest = smallest
+			smallest = list[i]
 		}
+		if list[i] > smallest && list[i] < sesmallest {
+			sesmallest = list[i]
+		}
+
 	}
-	return res, register
+
+	return smallest, sesmallest
 }
 
 func main() {
-	a := []int{1, 2, 3, 4, 5}
-	b := []int{4, 5, 6, 7, 8}
 
-	fmt.Println(findSame(a, b))
+	list := []int{10, 5, 20, 8, 15}
 
+	smallest, secsmallest := findSecondSmallest(list)
+
+	fmt.Printf("smallest number is: %d \nSecond smallest number is: %d", smallest, secsmallest)
 }
